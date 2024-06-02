@@ -93,7 +93,7 @@
         app:layout_constraintTop_toBottomOf="@+id/edtPassword2">
 
         <Button
-            android:id="@+id/btnOK"
+            android:id="@+id/btnAceptar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
