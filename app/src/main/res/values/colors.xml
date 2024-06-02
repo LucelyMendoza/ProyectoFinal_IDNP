@@ -2,5 +2,6 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="red">#FFFF0000</color>
+    <color name="guinda">#5E151D</color>
 
 </resources>
