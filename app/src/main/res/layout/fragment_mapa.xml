@@ -10,58 +10,76 @@
 
     <!-- Galería 1 -->
 
-    <TextView
-        android:id="@+id/txtHola"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="¡Hola!"
-        android:textColor="#878923"
-        android:textSize="12sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/view"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="20dp" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="413dp"
+        android:layout_height="114dp"
+        tools:layout_editor_absoluteX="-2dp"
+        tools:layout_editor_absoluteY="0dp">
 
-    <TextView
-        android:id="@+id/txtBienvenida"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Utiliza nuestro mapa interactivo"
-        android:textColor="#7E0303"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtHola"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="20dp" />
+        <TextView
+            android:id="@+id/txtHola"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="360dp"
+            android:text="¡Hola!"
+            android:textColor="#878923"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:id="@+id/imgVector"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="8dp"
-        android:src="@drawable/location"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.013"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtBienvenida" />
+        <TextView
+            android:id="@+id/txtBienvenida"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="136dp"
+            android:layout_marginBottom="10dp"
+            android:text="Utiliza nuestro mapa interactivo"
+            android:textColor="#7E0303"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/imgVector"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtHola" />
 
-    <TextView
-        android:id="@+id/tvDescription"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="16dp"
-        android:text="San Agustín 106 - Arequipa"
-        android:textColor="#000000"
-        android:textSize="12sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@id/imgVector"
-        app:layout_constraintTop_toBottomOf="@+id/txtBienvenida" />
+        <ImageView
+            android:id="@+id/imgVector"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/location"
+            app:layout_constraintBottom_toTopOf="@+id/gallery7"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtBienvenida"
+            app:layout_constraintVertical_bias="0.307" />
+
+        <TextView
+            android:id="@+id/tvDescription"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="20dp"
+            android:text="San Agustín 106 - Arequipa"
+            android:textColor="#000000"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toTopOf="@+id/gallery7"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@id/imgVector"
+            app:layout_constraintTop_toBottomOf="@+id/txtBienvenida"
+            app:layout_constraintVertical_bias="0.181" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <View
         android:id="@+id/view"
@@ -209,17 +227,15 @@
 
     <View
         android:id="@+id/Galerías"
-        android:layout_width="371dp"
-        android:layout_height="730dp"
+        android:layout_width="373dp"
+        android:layout_height="729dp"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
         android:layout_marginEnd="20dp"
-        android:layout_marginBottom="20dp"
         android:background="@drawable/border_black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvDescription" />
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
 
     <TextView
         android:id="@+id/txtGaleria1"
@@ -392,12 +408,12 @@
         android:layout_width="72dp"
         android:layout_height="53dp"
         android:layout_marginBottom="64dp"
+        android:rotation="180"
         android:src="@drawable/door"
         app:layout_constraintBottom_toBottomOf="@+id/gallery2"
         app:layout_constraintEnd_toEndOf="@+id/gallery2"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/gallery1"
-        android:rotation="180"/>
+        app:layout_constraintStart_toStartOf="@+id/gallery1" />
 
     <ImageView
         android:id="@+id/door4"
@@ -494,13 +510,15 @@
 
     <ImageView
         android:id="@+id/door12"
-        android:layout_width="87dp"
-        android:layout_height="72dp"
+        android:layout_width="72dp"
+        android:layout_height="68dp"
+        android:layout_marginEnd="4dp"
         android:rotation="90"
         android:src="@drawable/door"
         app:layout_constraintBottom_toBottomOf="@+id/nogallery"
         app:layout_constraintEnd_toEndOf="@+id/Prohibido3"
-        app:layout_constraintTop_toTopOf="@+id/nogallery" />
+        app:layout_constraintTop_toTopOf="@+id/nogallery"
+        app:layout_constraintVertical_bias="0.481" />
 
     <ImageView
         android:id="@+id/door13"
