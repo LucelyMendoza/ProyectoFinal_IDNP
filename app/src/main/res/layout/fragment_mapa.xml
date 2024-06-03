@@ -605,4 +605,14 @@
         app:layout_constraintBottom_toTopOf="@+id/gallery1"
         app:layout_constraintStart_toEndOf="@+id/gallery2" />
 
+    <ImageView
+        android:id="@+id/banio"
+        android:layout_width="39dp"
+        android:layout_height="33dp"
+        android:src="@drawable/banio"
+        app:layout_constraintBottom_toBottomOf="@+id/baños"
+        app:layout_constraintEnd_toEndOf="@+id/baños"
+        app:layout_constraintStart_toStartOf="@+id/baños"
+        app:layout_constraintTop_toTopOf="@+id/baños" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
