@@ -25,25 +25,32 @@
             android:layout_height="wrap_content">
 
             <TextView
-                android:id="@+id/textView6"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:id="@+id/textTituloFragment"
+                android:layout_width="80dp"
+                android:layout_height="28dp"
+                android:layout_marginTop="45dp"
                 android:text="Detalles"
-                tools:layout_editor_absoluteX="176dp"
+                android:textColor="@color/black"
                 android:textSize="20sp"
                 android:textStyle="bold"
-                tools:layout_editor_absoluteY="51dp" />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="MissingConstraints" />
 
             <ImageView
-                android:id="@+id/imageView9"
+                android:id="@+id/imgBack"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
+                android:layout_marginStart="-45dp"
+                android:layout_marginTop="45dp"
                 android:src="@drawable/iconoback"
-                tools:layout_editor_absoluteX="29dp"
-                tools:layout_editor_absoluteY="40dp" />
+                app:layout_constraintEnd_toStartOf="@+id/textTituloFragment"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
-                android:id="@+id/imageView2"
+                android:id="@+id/imgPintura"
                 android:layout_width="300dp"
                 android:layout_height="300dp"
                 android:layout_marginTop="110dp"
@@ -56,12 +63,12 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <TextView
-            android:id="@+id/textPintura"
+            android:id="@+id/textTituloPintura"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
+            android:layout_marginStart="40dp"
             android:layout_marginTop="16dp"
-            android:layout_marginEnd="32dp"
+            android:layout_marginEnd="40dp"
             android:text="PINTURA 3333"
             android:textColor="@color/guinda"
             android:textSize="24sp"
@@ -70,32 +77,33 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
+            android:layout_marginStart="40dp"
             android:layout_marginTop="10dp"
+            android:layout_marginEnd="40dp"
             android:orientation="horizontal">
 
             <ImageView
-                android:id="@+id/imageView6"
+                android:id="@+id/imgUbi"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_weight="1"
                 android:src="@drawable/iconoubi" />
 
             <TextView
-                android:id="@+id/textView4"
+                android:id="@+id/textGaleria"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="4dp"
                 android:layout_marginTop="4dp"
                 android:layout_weight="1"
                 android:text="Galeria #"
-                android:textSize="16sp" />
+                android:textSize="17sp" />
 
             <ImageView
-                android:id="@+id/imageView8"
+                android:id="@+id/imgAudio"
                 android:layout_width="35dp"
                 android:layout_height="35dp"
-                android:layout_marginStart="180dp"
+                android:layout_marginStart="190dp"
                 android:layout_weight="1"
                 android:scaleType="fitEnd"
                 android:src="@drawable/iconoaudio" />
@@ -103,14 +111,17 @@
         </LinearLayout>
 
         <TextView
-            android:id="@+id/textView5"
+            android:id="@+id/textDescripcion"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
+            android:layout_marginStart="40dp"
             android:layout_marginTop="16dp"
-            android:layout_marginEnd="32dp"
+            android:layout_marginEnd="40dp"
+            android:inputType="textMultiLine"
             android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
-            android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+            android:textColor="@color/black"
+            android:textSize="16sp" />
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
