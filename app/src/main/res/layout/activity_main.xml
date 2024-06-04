@@ -14,17 +14,18 @@
         android:layout_centerInParent="true" />
 
     <!-- Puerta -->
+
+    <!-- Pinturas derecha -->
     <View
         android:id="@+id/door"
         android:layout_width="30dp"
         android:layout_height="50dp"
-        android:background="#FFFFFF"
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="20dp"
-        android:layout_marginBottom="100dp"/>
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="250dp"
+        android:background="#FFFFFF" />
 
-    <!-- Pinturas derecha -->
     <View
         android:id="@+id/painting_right_1"
         android:layout_width="10dp"
@@ -40,7 +41,7 @@
         android:layout_height="40dp"
         android:layout_below="@id/painting_right_1"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="85dp"
         android:layout_marginEnd="16dp"
         android:background="#7B1FA2" />
 
@@ -50,7 +51,7 @@
         android:layout_height="40dp"
         android:layout_below="@id/painting_right_2"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="85dp"
         android:layout_marginEnd="16dp"
         android:background="#7B1FA2" />
 
@@ -60,7 +61,7 @@
         android:layout_height="40dp"
         android:layout_below="@id/painting_right_3"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="85dp"
         android:layout_marginEnd="16dp"
         android:background="#7B1FA2" />
 
@@ -70,7 +71,7 @@
         android:layout_height="40dp"
         android:layout_below="@id/painting_right_4"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="85dp"
         android:layout_marginEnd="16dp"
         android:background="#7B1FA2" />
 
@@ -80,21 +81,21 @@
         android:layout_height="40dp"
         android:layout_below="@id/painting_right_5"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="85dp"
         android:layout_marginEnd="16dp"
         android:background="#7B1FA2" />
 
+    <!-- Pinturas arriba -->
     <View
         android:id="@+id/painting_right_7"
         android:layout_width="10dp"
         android:layout_height="40dp"
         android:layout_below="@id/painting_right_6"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="85dp"
         android:layout_marginEnd="16dp"
         android:background="#7B1FA2" />
 
-    <!-- Pinturas arriba -->
     <View
         android:id="@+id/painting_top_1"
         android:layout_width="40dp"
@@ -108,33 +109,33 @@
         android:id="@+id/painting_top_2"
         android:layout_width="40dp"
         android:layout_height="10dp"
-        android:background="#7B1FA2"
-        android:layout_toEndOf="@id/painting_top_1"
-        android:layout_marginStart="16dp"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="16dp" />
+        android:layout_marginStart="85dp"
+        android:layout_marginTop="16dp"
+        android:layout_toEndOf="@id/painting_top_1"
+        android:background="#7B1FA2" />
 
     <View
         android:id="@+id/painting_top_3"
         android:layout_width="40dp"
         android:layout_height="10dp"
-        android:background="#7B1FA2"
-        android:layout_toEndOf="@id/painting_top_2"
-        android:layout_marginStart="16dp"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="16dp" />
+        android:layout_marginStart="85dp"
+        android:layout_marginTop="16dp"
+        android:layout_toEndOf="@id/painting_top_2"
+        android:background="#7B1FA2" />
 
+    <!-- Pinturas izquierda -->
     <View
         android:id="@+id/painting_top_4"
         android:layout_width="40dp"
         android:layout_height="10dp"
-        android:background="#7B1FA2"
-        android:layout_toEndOf="@id/painting_top_3"
-        android:layout_marginStart="16dp"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="16dp" />
+        android:layout_marginStart="94dp"
+        android:layout_marginTop="14dp"
+        android:layout_toEndOf="@id/painting_top_3"
+        android:background="#7B1FA2" />
 
-    <!-- Pinturas izquierda -->
     <View
         android:id="@+id/painting_left_1"
         android:layout_width="10dp"
@@ -144,37 +145,38 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="30dp" />
 
+    <!-- Pinturas abajo -->
+
     <View
         android:id="@+id/painting_left_2"
         android:layout_width="10dp"
         android:layout_height="40dp"
-        android:background="#7B1FA2"
         android:layout_below="@id/painting_left_1"
         android:layout_alignParentStart="true"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp" />
+        android:layout_marginTop="191dp"
+        android:background="#7B1FA2" />
 
     <View
         android:id="@+id/painting_left_3"
         android:layout_width="10dp"
         android:layout_height="40dp"
-        android:background="#7B1FA2"
         android:layout_below="@id/painting_left_2"
         android:layout_alignParentStart="true"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp" />
+        android:layout_marginTop="178dp"
+        android:background="#7B1FA2" />
 
     <View
         android:id="@+id/painting_left_4"
         android:layout_width="10dp"
         android:layout_height="40dp"
-        android:background="#7B1FA2"
         android:layout_below="@id/painting_left_3"
         android:layout_alignParentStart="true"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp" />
+        android:layout_marginTop="265dp"
+        android:background="#7B1FA2" />
 
-    <!-- Pinturas abajo -->
     <View
         android:id="@+id/painting_bottom_1"
         android:layout_width="40dp"
@@ -188,20 +190,20 @@
         android:id="@+id/painting_bottom_2"
         android:layout_width="40dp"
         android:layout_height="10dp"
-        android:background="#7B1FA2"
-        android:layout_toEndOf="@id/painting_bottom_1"
-        android:layout_marginStart="16dp"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="16dp" />
+        android:layout_marginStart="162dp"
+        android:layout_marginBottom="16dp"
+        android:layout_toEndOf="@id/painting_bottom_1"
+        android:background="#7B1FA2" />
 
     <View
         android:id="@+id/painting_bottom_3"
         android:layout_width="40dp"
         android:layout_height="10dp"
-        android:background="#7B1FA2"
-        android:layout_toEndOf="@id/painting_bottom_2"
-        android:layout_marginStart="16dp"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="16dp" />
+        android:layout_marginStart="162dp"
+        android:layout_marginBottom="16dp"
+        android:layout_toEndOf="@id/painting_bottom_2"
+        android:background="#7B1FA2" />
 
 </RelativeLayout>
