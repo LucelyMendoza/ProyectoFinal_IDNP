@@ -16,15 +16,16 @@
     <!-- Puerta -->
 
     <!-- Pinturas derecha -->
+
     <View
         android:id="@+id/door"
         android:layout_width="30dp"
         android:layout_height="50dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="16dp"
-        android:layout_marginBottom="250dp"
-        android:background="#FFFFFF" />
+        android:layout_marginStart="23dp"
+        android:layout_marginBottom="501dp"
+        android:background="#000000" />
 
     <View
         android:id="@+id/painting_right_1"
@@ -205,5 +206,78 @@
         android:layout_marginBottom="16dp"
         android:layout_toEndOf="@id/painting_bottom_2"
         android:background="#7B1FA2" />
+
+    <!--   SEPARACION     -->
+
+    <View
+        android:id="@+id/separacion"
+        android:layout_width="500dp"
+        android:layout_height="50dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="1dp"
+        android:layout_marginBottom="240dp"
+        android:background="#AAAAAA" />
+
+    <!--pinturas arriba de separacion-->
+    <View
+        android:id="@+id/painting_medium_arriba_1"
+        android:layout_width="40dp"
+        android:layout_height="10dp"
+        android:background="#7B1FA2"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="290dp"
+        android:layout_marginStart="30dp" />
+
+    <View
+        android:id="@+id/painting_medium_arriba_2"
+        android:layout_width="40dp"
+        android:layout_height="10dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="162dp"
+        android:layout_marginBottom="290dp"
+        android:layout_toEndOf="@id/painting_bottom_1"
+        android:background="#7B1FA2" />
+
+    <View
+        android:id="@+id/painting_medium_arriba_3"
+        android:layout_width="40dp"
+        android:layout_height="10dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="162dp"
+        android:layout_marginBottom="290dp"
+        android:layout_toEndOf="@id/painting_bottom_2"
+        android:background="#7B1FA2" />
+
+    <!--pinturas abajo de separacion -->
+    <View
+        android:id="@+id/painting_medium_abajo_1"
+        android:layout_width="40dp"
+        android:layout_height="10dp"
+        android:background="#7B1FA2"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="230dp"
+        android:layout_marginStart="30dp" />
+
+    <View
+        android:id="@+id/painting_medium_abajo_2"
+        android:layout_width="40dp"
+        android:layout_height="10dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="162dp"
+        android:layout_marginBottom="230dp"
+        android:layout_toEndOf="@id/painting_bottom_1"
+        android:background="#7B1FA2" />
+
+    <View
+        android:id="@+id/painting_medium_abajo_3"
+        android:layout_width="40dp"
+        android:layout_height="10dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="162dp"
+        android:layout_marginBottom="230dp"
+        android:layout_toEndOf="@id/painting_bottom_2"
+        android:background="#7B1FA2" />
+
 
 </RelativeLayout>
