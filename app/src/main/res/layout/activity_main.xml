@@ -210,15 +210,23 @@
     <!--   SEPARACION     -->
 
     <View
-        android:id="@+id/separacion"
-        android:layout_width="500dp"
+        android:id="@+id/separacion_medio_A"
+        android:layout_width="100dp"
         android:layout_height="50dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
         android:layout_marginStart="1dp"
         android:layout_marginBottom="240dp"
         android:background="#AAAAAA" />
-
+    <View
+        android:id="@+id/separacion_medio_B"
+        android:layout_width="350dp"
+        android:layout_height="50dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="150dp"
+        android:layout_marginBottom="240dp"
+        android:background="#AAAAAA" />
     <!--pinturas arriba de separacion-->
     <View
         android:id="@+id/painting_medium_arriba_1"
