@@ -11,6 +11,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.example.login.fragments.CuadrosFragment;
+import com.example.login.fragments.DetalleObraFragment;
 import com.example.login.fragments.HomeFragment;
 import com.example.login.fragments.MapaFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -22,6 +23,7 @@ public class HomeActivity extends AppCompatActivity {
     private FragmentTransaction fragmentTransaction = null;
     private HomeFragment homeFragment=null;
     private CuadrosFragment cuadrosFragment = null;
+    private DetalleObraFragment detalleObraFragment = null;
     private MapaFragment mapaFragment = null;
 
     @Override
@@ -50,6 +52,11 @@ public class HomeActivity extends AppCompatActivity {
                     homeFragment= HomeFragment.newInstance("","");
                     loadFragment(homeFragment);
                     return true;
+                //Con el fin de probar
+                /*if(menuItem.getItemId()==R.id.menu_home){
+                    detalleObraFragment= DetalleObraFragment.newInstance("","");
+                    loadFragment(detalleObraFragment);
+                    return true;*/
                 }else if(menuItem.getItemId()==R.id.menu_cuadros){
                     cuadrosFragment= CuadrosFragment.newInstance("","");
                     loadFragment(cuadrosFragment);
