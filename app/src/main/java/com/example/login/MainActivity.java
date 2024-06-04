@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
         painting1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, PaintingDescriptionActivity.class);
+                Intent intent = new Intent(MainActivity.this, com.example.myapp.PaintingDescriptionActivity.class);
                 intent.putExtra("PAINTING_ID", "1");
                 startActivity(intent);
             }
@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
         painting2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, PaintingDescriptionActivity.class);
+                Intent intent = new Intent(MainActivity.this, com.example.myapp.PaintingDescriptionActivity.class);
                 intent.putExtra("PAINTING_ID", "2");
                 startActivity(intent);
             }

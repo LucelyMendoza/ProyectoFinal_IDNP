@@ -29,11 +29,11 @@ android {
 
     buildFeatures {
         viewBinding = true
+        dataBinding = true // Habilitar data binding
     }
 }
 
 dependencies {
-
     implementation(libs.appcompat)
     implementation(libs.material)
     implementation(libs.activity)
