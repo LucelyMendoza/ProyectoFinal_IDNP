@@ -76,6 +76,7 @@
                 android:padding="8dp">
 
                 <ImageView
+                    android:id="@+id/imageViewGaleria1"
                     android:layout_width="match_parent"
                     android:layout_height="150dp"
                     android:src="@mipmap/galeria1"
@@ -104,6 +105,7 @@
                 android:padding="8dp">
 
                 <ImageView
+                    android:id="@+id/imageViewGaleria2"
                     android:layout_width="match_parent"
                     android:layout_height="150dp"
                     android:src="@mipmap/galeria2"
@@ -132,6 +134,7 @@
                 android:padding="8dp">
 
                 <ImageView
+                    android:id="@+id/imageViewGaleria3"
                     android:layout_width="match_parent"
                     android:layout_height="150dp"
                     android:src="@mipmap/galeria3"
@@ -160,6 +163,7 @@
                 android:padding="8dp">
 
                 <ImageView
+                    android:id="@+id/imageViewGaleria4"
                     android:layout_width="match_parent"
                     android:layout_height="150dp"
                     android:src="@mipmap/galeria4"
@@ -188,6 +192,7 @@
                 android:padding="8dp">
 
                 <ImageView
+                    android:id="@+id/imageViewGaleria5"
                     android:layout_width="match_parent"
                     android:layout_height="150dp"
                     android:src="@mipmap/galeria5"
@@ -216,6 +221,7 @@
                 android:padding="8dp">
 
                 <ImageView
+                    android:id="@+id/imageViewGaleria6"
                     android:layout_width="match_parent"
                     android:layout_height="150dp"
                     android:src="@mipmap/galeria6"
@@ -245,6 +251,7 @@
                 android:padding="8dp">
 
                 <ImageView
+                    android:id="@+id/imageViewGaleria7"
                     android:layout_width="150dp"
                     android:layout_height="150dp"
                     android:src="@mipmap/galeria7"

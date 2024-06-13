@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -59,6 +60,33 @@ public class HomeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_home, container, false);
+        View view = inflater.inflate(R.layout.fragment_home, container, false);
+
+        ImageView imageViewGaleria1 = view.findViewById(R.id.imageViewGaleria1);
+        ImageView imageViewGaleria2 = view.findViewById(R.id.imageViewGaleria2);
+        ImageView imageViewGaleria3 = view.findViewById(R.id.imageViewGaleria3);
+        ImageView imageViewGaleria4 = view.findViewById(R.id.imageViewGaleria4);
+        ImageView imageViewGaleria5 = view.findViewById(R.id.imageViewGaleria5);
+        ImageView imageViewGaleria6 = view.findViewById(R.id.imageViewGaleria6);
+        ImageView imageViewGaleria7 = view.findViewById(R.id.imageViewGaleria7);
+
+        imageViewGaleria1.setOnClickListener(v -> openGalleryFragment(new Gallery1Fragment()));
+        imageViewGaleria2.setOnClickListener(v -> openGalleryFragment(new Gallery2Fragment()));
+        imageViewGaleria3.setOnClickListener(v -> openGalleryFragment(new Gallery3Fragment()));
+        imageViewGaleria4.setOnClickListener(v -> openGalleryFragment(new Gallery4Fragment()));
+        imageViewGaleria5.setOnClickListener(v -> openGalleryFragment(new Gallery5Fragment()));
+        imageViewGaleria6.setOnClickListener(v -> openGalleryFragment(new Gallery6Fragment()));
+        imageViewGaleria7.setOnClickListener(v -> openGalleryFragment(new Gallery7Fragment()));
+
+        return view;
+    }
+
+    private void openGalleryFragment(Fragment fragment) {
+        if (getActivity() != null) {
+            getActivity().getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.frame_layout, fragment)
+                    .addToBackStack(null)
+                    .commit();
+        }
     }
 }
