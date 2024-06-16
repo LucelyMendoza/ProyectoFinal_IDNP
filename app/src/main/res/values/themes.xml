@@ -32,4 +32,13 @@
         <item name="android:textColor">@color/black</item>
     </style>
 
+    <style name="RoundedImage">
+        <item name="shapeAppearanceOverlay">@style/RoundedCorners</item>
+    </style>
+
+    <style name="RoundedCorners">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">16dp</item>
+    </style>
+
 </resources>

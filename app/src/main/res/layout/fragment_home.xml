@@ -16,28 +16,46 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="¡Hola!"
+            android:textSize="16sp"
+            android:textColor="@color/secondary"
+            style="@style/SubtitleText"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="Visiten el centro cultural de UNSA"
             style="@style/TitleText"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="San Agustin 106 - Arequipa"
-            style="@style/SubtitleText"/>
+            android:text="San Agustín 106 - Arequipa"
+            style="@style/SubtitleText"
+            android:drawableStart="@drawable/location_icon"
+            android:drawableTint="@color/primary"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/secondary"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="5dp"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Más popular"
-            style="@style/TitleText"
+            style="@style/ItemTitleText"
             android:layout_marginTop="16dp"/>
 
-        <ImageView
+        <com.google.android.material.imageview.ShapeableImageView
             android:layout_width="match_parent"
             android:layout_height="200dp"
             android:src="@mipmap/popular"
             android:scaleType="centerCrop"
-            android:layout_marginTop="8dp"/>
+            android:layout_marginTop="8dp"
+            style="@style/RoundedImage"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -46,12 +64,33 @@
             style="@style/ItemTitleText"
             android:layout_marginTop="4dp"/>
 
-        <TextView
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="ridzjcob"
-            style="@style/ItemSubtitleText"
-            android:layout_marginTop="2dp"/>
+            android:orientation="horizontal"
+            android:layout_marginTop="2dp">
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@mipmap/artista1"
+                android:scaleType="centerCrop"
+                android:layout_marginEnd="8dp"
+                style="@style/RoundedImage"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" @ridzjcob"
+                style="@style/ItemSubtitleText"/>
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/secondary"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="5dp"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -75,12 +114,13 @@
                 android:orientation="vertical"
                 android:padding="8dp">
 
-                <ImageView
+                <com.google.android.material.imageview.ShapeableImageView
                     android:id="@+id/imageViewGaleria1"
                     android:layout_width="match_parent"
                     android:layout_height="150dp"
                     android:src="@mipmap/galeria1"
-                    android:scaleType="centerCrop"/>
+                    android:scaleType="centerCrop"
+                    style="@style/RoundedImage"/>
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -93,7 +133,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Primer patio"
-                    style="@style/ItemSubtitleText"/>
+                    style="@style/ItemSubtitleText"
+                    android:drawableStart="@drawable/location_icon"/>
             </LinearLayout>
 
             <!-- Gallery Item 2 -->
@@ -104,12 +145,13 @@
                 android:orientation="vertical"
                 android:padding="8dp">
 
-                <ImageView
+                <com.google.android.material.imageview.ShapeableImageView
                     android:id="@+id/imageViewGaleria2"
                     android:layout_width="match_parent"
                     android:layout_height="150dp"
                     android:src="@mipmap/galeria2"
-                    android:scaleType="centerCrop"/>
+                    android:scaleType="centerCrop"
+                    style="@style/RoundedImage"/>
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -122,7 +164,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Primer patio"
-                    style="@style/ItemSubtitleText"/>
+                    style="@style/ItemSubtitleText"
+                    android:drawableStart="@drawable/location_icon"/>
             </LinearLayout>
 
             <!-- Gallery Item 3 -->
@@ -133,12 +176,13 @@
                 android:orientation="vertical"
                 android:padding="8dp">
 
-                <ImageView
+                <com.google.android.material.imageview.ShapeableImageView
                     android:id="@+id/imageViewGaleria3"
                     android:layout_width="match_parent"
                     android:layout_height="150dp"
                     android:src="@mipmap/galeria3"
-                    android:scaleType="centerCrop"/>
+                    android:scaleType="centerCrop"
+                    style="@style/RoundedImage"/>
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -151,7 +195,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Primer patio"
-                    style="@style/ItemSubtitleText"/>
+                    style="@style/ItemSubtitleText"
+                    android:drawableStart="@drawable/location_icon"/>
             </LinearLayout>
 
             <!-- Gallery Item 4 -->
@@ -162,12 +207,13 @@
                 android:orientation="vertical"
                 android:padding="8dp">
 
-                <ImageView
+                <com.google.android.material.imageview.ShapeableImageView
                     android:id="@+id/imageViewGaleria4"
                     android:layout_width="match_parent"
                     android:layout_height="150dp"
                     android:src="@mipmap/galeria4"
-                    android:scaleType="centerCrop"/>
+                    android:scaleType="centerCrop"
+                    style="@style/RoundedImage"/>
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -180,7 +226,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Primer patio"
-                    style="@style/ItemSubtitleText"/>
+                    style="@style/ItemSubtitleText"
+                    android:drawableStart="@drawable/location_icon"/>
             </LinearLayout>
 
             <!-- Gallery Item 5 -->
@@ -191,12 +238,13 @@
                 android:orientation="vertical"
                 android:padding="8dp">
 
-                <ImageView
+                <com.google.android.material.imageview.ShapeableImageView
                     android:id="@+id/imageViewGaleria5"
                     android:layout_width="match_parent"
                     android:layout_height="150dp"
                     android:src="@mipmap/galeria5"
-                    android:scaleType="centerCrop"/>
+                    android:scaleType="centerCrop"
+                    style="@style/RoundedImage"/>
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -209,7 +257,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Pasadillo II"
-                    style="@style/ItemSubtitleText"/>
+                    style="@style/ItemSubtitleText"
+                    android:drawableStart="@drawable/location_icon"/>
             </LinearLayout>
 
             <!-- Gallery Item 6 -->
@@ -220,12 +269,13 @@
                 android:orientation="vertical"
                 android:padding="8dp">
 
-                <ImageView
+                <com.google.android.material.imageview.ShapeableImageView
                     android:id="@+id/imageViewGaleria6"
                     android:layout_width="match_parent"
                     android:layout_height="150dp"
                     android:src="@mipmap/galeria6"
-                    android:scaleType="centerCrop"/>
+                    android:scaleType="centerCrop"
+                    style="@style/RoundedImage"/>
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -238,7 +288,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Segundo patio"
-                    style="@style/ItemSubtitleText"/>
+                    style="@style/ItemSubtitleText"
+                    android:drawableStart="@drawable/location_icon"/>
             </LinearLayout>
 
             <!-- Last Gallery Item centered -->
@@ -250,12 +301,13 @@
                 android:orientation="vertical"
                 android:padding="8dp">
 
-                <ImageView
+                <com.google.android.material.imageview.ShapeableImageView
                     android:id="@+id/imageViewGaleria7"
                     android:layout_width="150dp"
                     android:layout_height="150dp"
                     android:src="@mipmap/galeria7"
-                    android:scaleType="centerCrop"/>
+                    android:scaleType="centerCrop"
+                    style="@style/RoundedImage"/>
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -268,7 +320,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Tercer patio"
-                    style="@style/ItemSubtitleText"/>
+                    style="@style/ItemSubtitleText"
+                    android:drawableStart="@drawable/location_icon"/>
             </LinearLayout>
 
         </GridLayout>
