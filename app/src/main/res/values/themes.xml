@@ -1,4 +1,5 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
+<<<<<<< HEAD
     <style name="Base.Theme.HomeStructure" parent="Theme.Material3.DayNight.NoActionBar">
     </style>
 
@@ -41,4 +42,18 @@
         <item name="cornerSize">16dp</item>
     </style>
 
+=======
+    <!-- Base application theme. -->
+    <style name="Base.Theme.Login" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Customize your light theme here. -->
+        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+    </style>
+
+    <style name="Theme.Login" parent="Base.Theme.Login" />
+
+    <style name="RoundedButton" parent="Widget.MaterialComponents.Button">
+        <item name="android:color">@drawable/button_rounded</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+>>>>>>> main
 </resources>

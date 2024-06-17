@@ -19,5 +19,11 @@ dependencyResolutionManagement {
     }
 }
 
+<<<<<<< HEAD
 rootProject.name = "HomeStructure"
 include(":app")
+=======
+rootProject.name = "Login"
+include(":app")
+ 
+>>>>>>> main
