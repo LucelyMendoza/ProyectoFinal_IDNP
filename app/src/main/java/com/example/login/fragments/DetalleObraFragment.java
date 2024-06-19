@@ -1,49 +1,55 @@
 package com.example.login.fragments;
 
+import android.media.MediaPlayer;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.idnp2024a.loginsample.R;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link DetalleObraFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class DetalleObraFragment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+    private static final String ARG_IMAGEN_ID = "imagenId";
+    private static final String ARG_NOMBRE = "nombre";
+    private static final String ARG_ARTISTA = "artista";
+    private static final String ARG_ESTRELLAS = "estrellas";
+    private static final String ARG_DESCRIPCION = "descripcion";
+    private static final String ARG_GALERIA = "galeria";
+    private static final String ARG_AUDIO_ID = "audioId";
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    private int imagenId;
+    private String nombre;
+    private String artista;
+    private String estrellas;
+    private String descripcion;
+    private String galeria;
+    private int audioId;
+
+    private MediaPlayer mediaPlayer;
 
     public DetalleObraFragment() {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment DetalleObraFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static DetalleObraFragment newInstance(String param1, String param2) {
+    public static DetalleObraFragment newInstance(int imagenId, String nombre, String artista, String estrellas, String galeria, String descripcion, int audioId) {
         DetalleObraFragment fragment = new DetalleObraFragment();
         Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
+        args.putInt(ARG_IMAGEN_ID, imagenId);
+        args.putString(ARG_NOMBRE, nombre);
+        args.putString(ARG_ARTISTA, artista);
+        args.putString(ARG_ESTRELLAS, estrellas);
+        args.putString(ARG_DESCRIPCION, descripcion);
+        args.putString(ARG_GALERIA, galeria);
+        args.putInt(ARG_AUDIO_ID, audioId);
         fragment.setArguments(args);
         return fragment;
     }
@@ -52,15 +58,66 @@ public class DetalleObraFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
+            imagenId = getArguments().getInt(ARG_IMAGEN_ID);
+            nombre = getArguments().getString(ARG_NOMBRE);
+            artista = getArguments().getString(ARG_ARTISTA);
+            estrellas = getArguments().getString(ARG_ESTRELLAS);
+            descripcion = getArguments().getString((ARG_DESCRIPCION));
+            galeria = getArguments().getString((ARG_GALERIA));
+            audioId = getArguments().getInt(ARG_AUDIO_ID);
         }
     }
 
+    @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_detalle_obra, container, false);
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_detalle_obra, container, false);
+
+        ImageView imgDetalle = view.findViewById(R.id.imgPintura);
+        TextView txtNombre = view.findViewById(R.id.textTituloPintura);
+        TextView txtGaleria = view.findViewById(R.id.textGaleria);
+        TextView txtDescripcion = view.findViewById(R.id.textDescripcion);
+        ImageView imgBack = view.findViewById(R.id.imgBack);
+        ImageView imgAudio = view.findViewById(R.id.imgAudio);
+
+        imgDetalle.setImageResource(imagenId);
+        txtNombre.setText(nombre);
+        txtDescripcion.setText(descripcion);
+        txtGaleria.setText(galeria);
+
+        // Botón back
+        imgBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentManager fragmentManager = getParentFragmentManager();
+                fragmentManager.popBackStack();
+            }
+        });
+
+        // botón de audio
+        imgAudio.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (mediaPlayer == null) {
+                    mediaPlayer = MediaPlayer.create(getContext(), audioId);
+                }
+                if (mediaPlayer.isPlaying()) {
+                    mediaPlayer.pause();
+                } else {
+                    mediaPlayer.start();
+                }
+            }
+        });
+
+        return view;
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        if (mediaPlayer != null) {
+            mediaPlayer.release();
+            mediaPlayer = null;
+        }
     }
 }
