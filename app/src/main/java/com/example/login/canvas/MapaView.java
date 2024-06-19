@@ -307,12 +307,5 @@ public class MapaView extends View {
         canvas.save();
         canvas.translate(offsetX, offsetY);
         canvas.scale(scale, scale);
-
-        // Draw each area of the map
-        for (Mapa mapa : mapas) {
-            mapa.draw(canvas, paint);
-        }
-
     }
 }
-
