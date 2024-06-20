@@ -1,4 +1,4 @@
-package com.example.roomviewproject;
+package com.idnp2024a.homestructure;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
