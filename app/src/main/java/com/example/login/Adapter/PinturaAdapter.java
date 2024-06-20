@@ -1,14 +1,10 @@
 package com.example.login.Adapter;
 
-import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.login.Pintura;
@@ -18,11 +14,13 @@ import java.util.List;
 
 public class PinturaAdapter extends RecyclerView.Adapter<PinturaViewHolder> {
     private List<Pintura> pinturas;
-    private OnItemClickListener listener;
+    private OnItemClickListener itemClickListener;
+    private OnAudioClickListener audioClickListener;
 
-    public PinturaAdapter(List<Pintura> pinturas, OnItemClickListener listener) {
+    public PinturaAdapter(List<Pintura> pinturas, OnItemClickListener itemClickListener, OnAudioClickListener audioClickListener) {
         this.pinturas = pinturas;
-        this.listener = listener;
+        this.itemClickListener = itemClickListener;
+        this.audioClickListener = audioClickListener;
     }
 
     @NonNull
@@ -35,7 +33,7 @@ public class PinturaAdapter extends RecyclerView.Adapter<PinturaViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull PinturaViewHolder holder, int position) {
         Pintura pintura = pinturas.get(position);
-        holder.bind(pintura, listener);
+        holder.bind(pintura, itemClickListener, audioClickListener);
     }
 
     @Override
@@ -46,10 +44,11 @@ public class PinturaAdapter extends RecyclerView.Adapter<PinturaViewHolder> {
     public interface OnItemClickListener {
         void onItemClick(Pintura pintura);
     }
+
+    public interface OnAudioClickListener {
+        void onAudioClick(Pintura pintura);
+    }
 }
-
-
-
 
 
 

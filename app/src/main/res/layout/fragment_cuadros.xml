@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFFFFF"
     tools:context="com.example.login.fragments.CuadrosFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -87,7 +88,7 @@
                     android:layout_weight="1"
                     android:ems="10"
                     android:inputType="text"
-                    android:text="Buscar"
+                    android:hint="Buscar"
                     android:textSize="16sp" />
 
             </LinearLayout>
@@ -95,6 +96,7 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:id="@+id/pinturasRecyclerView"
                 android:layout_marginTop="16dp" >
 
             </androidx.recyclerview.widget.RecyclerView>

@@ -62,8 +62,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:layout_marginBottom="2dp"
-                    android:text="Pintura"
                     android:textColor="@color/black"
+                    android:text="Pintura"
                     android:textSize="18dp"
                     android:textStyle="bold" />
 
@@ -72,7 +72,6 @@
                     android:layout_width="match_parent"
                     android:layout_marginTop="5dp"
                     android:layout_height="wrap_content"
-                    android:text="Artista"
                     android:textColor="@color/black"
                     android:textSize="14dp" />
 
@@ -87,7 +86,6 @@
                 android:layout_marginEnd="6dp"
                 android:layout_marginRight="6dp"
                 android:layout_marginTop="48dp"
-                android:text="Estrellas"
                 android:textSize="20dp" />
 
 

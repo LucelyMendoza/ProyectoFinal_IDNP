@@ -11,7 +11,7 @@ import com.example.login.Pintura;
 import com.idnp2024a.loginsample.R;
 
 public class PinturaViewHolder extends RecyclerView.ViewHolder {
-    ImageView imgPintura;
+    ImageView imgPintura, imgAudio;
     TextView nombre, artista, estrellas;
 
     public PinturaViewHolder(View view) {
@@ -20,10 +20,10 @@ public class PinturaViewHolder extends RecyclerView.ViewHolder {
         nombre = view.findViewById(R.id.txtPintura);
         artista = view.findViewById(R.id.txtArtista);
         estrellas = view.findViewById(R.id.txtEstrellas);
-
+        imgAudio = view.findViewById(R.id.imgAudio);
     }
 
-    public void bind(final Pintura pintura, final PinturaAdapter.OnItemClickListener listener) {
+    public void bind(final Pintura pintura, final PinturaAdapter.OnItemClickListener listener, final PinturaAdapter.OnAudioClickListener audioClickListener) {
         if (imgPintura != null) {
             imgPintura.setImageResource(pintura.getImagenId());
         }
@@ -45,5 +45,6 @@ public class PinturaViewHolder extends RecyclerView.ViewHolder {
                 }
             }
         });
+
     }
 }
