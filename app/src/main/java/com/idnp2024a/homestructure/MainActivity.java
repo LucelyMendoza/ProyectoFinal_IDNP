@@ -8,6 +8,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.idnp2024a.homestructure.databinding.ActivityMainBinding;
+import com.idnp2024a.loginsample.R;
 
 public class MainActivity extends AppCompatActivity {
 
