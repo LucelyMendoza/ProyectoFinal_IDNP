@@ -60,7 +60,6 @@ public class HomeActivity extends AppCompatActivity {
                 }else if(menuItem.getItemId()==R.id.menu_cuadros){
                     cuadrosFragment= CuadrosFragment.newInstance("","");
                     loadFragment(cuadrosFragment);
-                    fragmentTransaction.addToBackStack(null);
                     return true;
                 }else if(menuItem.getItemId()==R.id.menu_mapas){
                     mapaFragment= MapaFragment.newInstance("","");

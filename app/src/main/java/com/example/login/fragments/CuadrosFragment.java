@@ -1,67 +1,48 @@
 package com.example.login.fragments;
 
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.login.Adapter.PinturaAdapter;
-import com.example.login.Pintura;
 import com.idnp2024a.loginsample.R;
 
-import java.util.ArrayList;
-import java.util.List;
-
+/**
+ * A simple {@link Fragment} subclass.
+ * Use the {@link CuadrosFragment#newInstance} factory method to
+ * create an instance of this fragment.
+ */
 public class CuadrosFragment extends Fragment {
-    private List<Pintura> pinturas;
-    private FragmentManager fragmentManager;
-    private PinturaAdapter.OnItemClickListener listener = new PinturaAdapter.OnItemClickListener() {
-        @Override
-        public void onItemClick(Pintura pintura) {
-            // Crea el nuevo fragmento y la transacción
-            DetalleObraFragment detalleObraFragment = DetalleObraFragment.newInstance(
-                    pintura.getImagenId(),
-                    pintura.getNombre(),
-                    pintura.getArtista(),
-                    pintura.getEstrellas(),
-                    pintura.getGaleria(),
-                    pintura.getDescripcion(),
-                    pintura.getAudio()
-            );
 
-            loadFragment(detalleObraFragment);
-        }
-    };
+    // TODO: Rename parameter arguments, choose names that match
+    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+    private static final String ARG_PARAM1 = "param1";
+    private static final String ARG_PARAM2 = "param2";
 
-    private void loadFragment(Fragment fragment) {
-        if (fragmentManager != null) {
-            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-            fragmentTransaction.replace(R.id.fragmentContainerView, fragment);
-            fragmentTransaction.addToBackStack(null);
-            fragmentTransaction.commit();
-        }
-    }
+    // TODO: Rename and change types of parameters
+    private String mParam1;
+    private String mParam2;
 
     public CuadrosFragment() {
         // Required empty public constructor
     }
 
+    /**
+     * Use this factory method to create a new instance of
+     * this fragment using the provided parameters.
+     *
+     * @param param1 Parameter 1.
+     * @param param2 Parameter 2.
+     * @return A new instance of fragment CuadrosFragment.
+     */
+    // TODO: Rename and change types and number of parameters
     public static CuadrosFragment newInstance(String param1, String param2) {
         CuadrosFragment fragment = new CuadrosFragment();
         Bundle args = new Bundle();
-        args.putString("param1", param1);
-        args.putString("param2", param2);
+        args.putString(ARG_PARAM1, param1);
+        args.putString(ARG_PARAM2, param2);
         fragment.setArguments(args);
         return fragment;
     }
@@ -70,80 +51,15 @@ public class CuadrosFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            String mParam1 = getArguments().getString("param1");
-            String mParam2 = getArguments().getString("param2");
+            mParam1 = getArguments().getString(ARG_PARAM1);
+            mParam2 = getArguments().getString(ARG_PARAM2);
         }
-
-        init(); // Inicialización de datos
-    }
-
-    public void init() {
-        pinturas = new ArrayList<>();
-        pinturas.add(new Pintura(R.drawable.obra1, "Pintura 1", "Artista 1", "5 estrellas", "Galeria IV", "Arte abstracto a base de oleos sobre un lienzo.", R.raw.audio1));
-        pinturas.add(new Pintura(R.drawable.obra2, "Pintura 2", "Artista 2", "4 estrellas", "Galeria II", "Pintura en lienzo, técnica de acuarelas, y representando un lugar conocido de la ciudad de Arequipa.", R.raw.audio2));
-        pinturas.add(new Pintura(R.drawable.obra3, "Pintura 3", "Artista 3", "2 estrellas", "Galeria III", "Fotografía en estilo autorretrato, en Arequipa.", R.raw.audio1));
-        pinturas.add(new Pintura(R.drawable.obra4, "Pintura 4", "Artista 4", "1 estrella", "Galeria II", "Fotografía de una costumbre peruana, en la ciudad de Cusco.", R.raw.audio1));
-        pinturas.add(new Pintura(R.drawable.obra5, "Pintura 5", "Artista 5", "1 estrellas", "Galeria I", "Caricatura en homenaje a un artista experto en caricaturas.", R.raw.audio1));
-        pinturas.add(new Pintura(R.drawable.obra6, "Pintura 6", "Artista 1", "5 estrellas", "Galeria IV", " Arte abstracto a base de oleos sobre un lienzo.", R.raw.audio1));
-        pinturas.add(new Pintura(R.drawable.obra7, "Pintura 7", "Artista 4", "4 estrellas", "Galeria II", "Fotografía del traje típico que se usa en una costumbre peruana, en la ciudad de Cusco.", R.raw.audio1));
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_cuadros, container, false);
-
-        // Configuracion del RecyclerView
-        RecyclerView recyclerView = view.findViewById(R.id.pinturasRecyclerView);
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-
-        PinturaAdapter pinturaAdapter = new PinturaAdapter(pinturas, listener);
-        recyclerView.setAdapter(pinturaAdapter);
-
-        fragmentManager = getParentFragmentManager();  // Puede ser getFragmentManager() o getChildFragmentManager() dependiendo de tu caso
-        // Back
-        ImageView imgFlecha = view.findViewById(R.id.imgFlecha);
-        imgFlecha.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                getParentFragmentManager().popBackStack();
-            }
-        });
-
-        // filtro
-        ImageView imgFiltro = view.findViewById(R.id.imgFiltro);
-        imgFiltro.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // FALTA IMPLEMENTAR
-                Toast.makeText(getContext(), "Filtrar", Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        //  buscador
-        EditText edtBuscador = view.findViewById(R.id.edtBuscador);
-        edtBuscador.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int start, int count, int after) {
-
-            }
-            @Override
-            public void onTextChanged(CharSequence charSequence, int start, int before, int count) {
-                String query = charSequence.toString().toLowerCase();
-                List<Pintura> filteredList = new ArrayList<>();
-                for (Pintura pintura : pinturas) {
-                    if (pintura.getNombre().toLowerCase().contains(query) ||
-                            pintura.getArtista().toLowerCase().contains(query)) {
-                        filteredList.add(pintura);
-                    }
-                }
-                PinturaAdapter pinturaAdapter = new PinturaAdapter(filteredList, listener);
-                recyclerView.setAdapter(pinturaAdapter);
-            }
-            @Override
-            public void afterTextChanged(Editable editable) {
-            }
-        });
-        return view;
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.fragment_cuadros, container, false);
     }
 }

@@ -26,7 +26,6 @@ public class LoginActivity extends AppCompatActivity {
     private String accountEntityString;
     private ActivityResultLauncher<Intent> activityResultLauncher;
     @Override
-
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 /*        EdgeToEdge.enable(this);
