@@ -58,4 +58,3 @@ public class AccountEntity implements Serializable {
         this.password = password;
     }
 }
-

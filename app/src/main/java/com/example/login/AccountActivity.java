@@ -94,4 +94,3 @@ public class AccountActivity extends AppCompatActivity {
                 intent.putExtra("accountEntity", accountEntity);
                 startActivity(intent);
             }*/
-

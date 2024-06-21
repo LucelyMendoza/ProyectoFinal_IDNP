@@ -1,4 +1,4 @@
-package com.idnp2024a.homestructure;
+package com.example.login;
 
 
 public class PointRoom {

@@ -1,16 +1,14 @@
-package com.idnp2024a.homestructure;
+package com.example.login;
+
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.drawable.Drawable;
-import android.util.AttributeSet;
 import android.view.View;
 
-import androidx.annotation.Nullable;
 import androidx.appcompat.content.res.AppCompatResources;
 
-import com.idnp2024a.homestructure.PointRoom;
 import com.idnp2024a.loginsample.R;
 
 import java.util.List;
@@ -55,10 +53,10 @@ public class RoomView extends View {
             {610, 1610, 770, 1770},  // bottom-middle-right
     };
 
-    public RoomView(Context context, @Nullable AttributeSet attrs) {
-        super(context, attrs);
-        this.context = context;
+    public RoomView(Context context) {
+        super(context);
     }
+
 
     public void setData(List<PointRoom> points) {
         this.points = points;

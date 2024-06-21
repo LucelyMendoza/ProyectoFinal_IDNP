@@ -16,7 +16,8 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.example.login.fragments.HomeFragment;
+import com.example.login.RoomView;
+import com.example.login.fragments.CuadrosFragment;
 import com.idnp2024a.loginsample.R;
 
 import java.util.ArrayList;
@@ -193,18 +194,17 @@ public class MapaView extends View {
 
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
-                // Verificar si el toque está dentro de alguna galería
+                // Verificar si el toque está dentro de "Galería I"
                 if (estaEnAreaGaleria(galeria1TextX, galeria1TextY, "Galería I", touchX, touchY)) {
-                    // Manejar el evento de clic en "GALERÍA 1"
+                    // Manejar el evento de clic en "Galería I"
                     Log.d(TAG, "Se ha presionado Galería I");
 
-                    // Aquí puedes iniciar la navegación a otro fragmento
+                    // Iniciar la transacción del fragmento RoomView
                     FragmentManager fragmentManager = ((FragmentActivity) getContext()).getSupportFragmentManager();
                     FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                    fragmentTransaction.replace(R.id.fragment_container, new HomeFragment());
+                    fragmentTransaction.replace(R.id.fragment_container, new CuadrosFragment());
                     fragmentTransaction.addToBackStack(null); // Permite volver al fragmento anterior con el botón de retroceso
                     fragmentTransaction.commit();
-
                     // Indicar que se ha manejado el evento de toque
                     return true;
                 } else if (estaEnAreaGaleria(galeria2TextX, galeria2TextY, "Galería II", touchX, touchY)) {
@@ -309,3 +309,4 @@ public class MapaView extends View {
         canvas.scale(scale, scale);
     }
 }
+

@@ -17,15 +17,16 @@ import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.gson.Gson;
-import com.idnp2024a.loginsample.databinding.ActivityMainBinding;
+import com.idnp2024a.loginsample.databinding.ActivityLoginBinding;
 
 public class LoginActivity extends AppCompatActivity {
-    private static String TAB = "MainActivity";
-    private ActivityMainBinding binding;
+    private static String TAB = "LoginActivity";
+    private ActivityLoginBinding binding;
     private AccountEntity accountEntity;
     private String accountEntityString;
     private ActivityResultLauncher<Intent> activityResultLauncher;
     @Override
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 /*        EdgeToEdge.enable(this);
@@ -36,7 +37,7 @@ public class LoginActivity extends AppCompatActivity {
             return insets;
         });*/
 
-        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        binding = ActivityLoginBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
         setContentView(view);
 
@@ -54,7 +55,7 @@ public class LoginActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "Autenticación exitosa", Toast.LENGTH_SHORT).show();
                     Log.d(TAG, "Bienvenido a mi app");
 
-                    Intent intent= new Intent(getApplicationContext(), HomeActivity.class);
+                    Intent intent= new Intent(getApplicationContext(), MainActivity.class);
                     intent.putExtra("ACCOUNT", accountEntityString);
 
                     startActivity(intent);
@@ -71,29 +72,29 @@ public class LoginActivity extends AppCompatActivity {
             activityResultLauncher.launch(intent);
         });
 
-    activityResultLauncher = registerForActivityResult(
-            new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
-                @Override
-                public void onActivityResult(ActivityResult activityResult) {
-                    Integer resultCode = activityResult.getResultCode();
-                    Log.d("LoginActivity", "resultCode: " + resultCode);
-                    if(resultCode==AccountActivity.ACCOUNT_ACEPTAR){
-                        Intent data = activityResult.getData();
-                        accountEntityString = data.getStringExtra(AccountActivity.ACCOUNT_RECORD);
+        activityResultLauncher = registerForActivityResult(
+                new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
+                    @Override
+                    public void onActivityResult(ActivityResult activityResult) {
+                        Integer resultCode = activityResult.getResultCode();
+                        Log.d("LoginActivity", "resultCode: " + resultCode);
+                        if(resultCode==AccountActivity.ACCOUNT_ACEPTAR){
+                            Intent data = activityResult.getData();
+                            accountEntityString = data.getStringExtra(AccountActivity.ACCOUNT_RECORD);
 
-                        Gson gson = new Gson();
-                        accountEntity = gson.fromJson(accountEntityString, AccountEntity.class);
+                            Gson gson = new Gson();
+                            accountEntity = gson.fromJson(accountEntityString, AccountEntity.class);
 
-                        String firstname = accountEntity.getFirstname();
-                        Toast.makeText(getApplicationContext(), "Nombre:" + firstname, Toast.LENGTH_SHORT).show();
-                        Log.d("LoginActivity", "Nombre: " + firstname);
+                            String firstname = accountEntity.getFirstname();
+                            Toast.makeText(getApplicationContext(), "Nombre:" + firstname, Toast.LENGTH_SHORT).show();
+                            Log.d("LoginActivity", "Nombre: " + firstname);
+                        }
+                        else if(activityResult.getResultCode()==AccountActivity.ACCOUNT_CANCELAR){
+                            Toast.makeText(getApplicationContext(),"Cancelado", Toast.LENGTH_SHORT).show();
+                            Log.d("LoginActivity", "Cancelado");
+                        }
                     }
-                    else if(activityResult.getResultCode()==AccountActivity.ACCOUNT_CANCELAR){
-                        Toast.makeText(getApplicationContext(),"Cancelado", Toast.LENGTH_SHORT).show();
-                        Log.d("LoginActivity", "Cancelado");
-                    }
-                }
-            });
+                });
     }
 }
 
