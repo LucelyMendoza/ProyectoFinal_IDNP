@@ -16,8 +16,8 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.example.login.RoomView;
-import com.example.login.fragments.CuadrosFragment;
+import com.example.login.fragments.GalleryFragment;
+import com.example.login.fragments.HomeFragment;
 import com.idnp2024a.loginsample.R;
 
 import java.util.ArrayList;
@@ -55,7 +55,7 @@ public class MapaView extends View {
     private void drawGalleryText(Canvas canvas) {
         Paint textPaint = new Paint();
         textPaint.setColor(0xFFDEA617);  // Orange text color
-        textPaint.setTextSize(40 / scale); // Adjust text size for scaling
+        textPaint.setTextSize(41 / scale); // Adjust text size for scaling
 
         canvas.drawText("Galería I", galeria1TextX, galeria1TextY, textPaint);
         canvas.drawText("Galería II", galeria2TextX, galeria2TextY, textPaint);
@@ -187,6 +187,25 @@ public class MapaView extends View {
             Log.d("MapaView", verticesStr.toString());
         }
     }
+    private static final float MARGIN_GALERIA = 50; // Define el margen adicional para todas las galerías
+
+    // Método para verificar si el toque está dentro del área de una galería específica
+    private boolean estaEnAreaGaleria(float textX, float textY, String galeriaText, float touchX, float touchY) {
+        Paint textPaint = new Paint();
+        textPaint.setColor(0xFFDEA617);
+        textPaint.setTextSize(40 / scale); // Ajusta el tamaño del texto según sea necesario
+
+        float textWidth = textPaint.measureText(galeriaText);  // Ancho del texto
+        float textHeight = textPaint.getTextSize();            // Altura del texto
+
+        float textLeft = textX - MARGIN_GALERIA;
+        float textTop = textY - textHeight - MARGIN_GALERIA;  // Ajusta según cómo se dibuja el texto
+        float textRight = textX + textWidth + MARGIN_GALERIA;
+        float textBottom = textY + MARGIN_GALERIA;
+
+        // Verificar si las coordenadas del toque están dentro del área del texto de la galería
+        return touchX >= textLeft && touchX <= textRight && touchY >= textTop && touchY <= textBottom;
+    }
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         float touchX = event.getX();
@@ -195,20 +214,20 @@ public class MapaView extends View {
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
                 // Verificar si el toque está dentro de "Galería I"
-                if (estaEnAreaGaleria(galeria1TextX, galeria1TextY, "Galería I", touchX, touchY)) {
+                if (estaEnAreaGaleria(galeria2TextX, galeria2TextY, "Galería I", touchX, touchY)) {
                     // Manejar el evento de clic en "Galería I"
                     Log.d(TAG, "Se ha presionado Galería I");
 
                     // Iniciar la transacción del fragmento RoomView
                     FragmentManager fragmentManager = ((FragmentActivity) getContext()).getSupportFragmentManager();
                     FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                    fragmentTransaction.replace(R.id.fragment_container, new CuadrosFragment());
+                    fragmentTransaction.replace(R.id.fragmentContainerView, new GalleryFragment());
                     fragmentTransaction.addToBackStack(null); // Permite volver al fragmento anterior con el botón de retroceso
                     fragmentTransaction.commit();
                     // Indicar que se ha manejado el evento de toque
                     return true;
                 } else if (estaEnAreaGaleria(galeria2TextX, galeria2TextY, "Galería II", touchX, touchY)) {
-                    // Manejar el evento de clic en "GALERÍA 2"
+                    // Manejar el evento de clic en "GALERÍA II"
                     Log.d(TAG, "Se ha presionado Galería II");
 
                     // Aquí puedes iniciar la navegación a otro fragmento o realizar otra acción
@@ -222,27 +241,34 @@ public class MapaView extends View {
         return super.onTouchEvent(event);
     }
 
-    // Método para verificar si el toque está dentro del área de una galería específica
-    private boolean estaEnAreaGaleria(float textX, float textY, String galeriaText, float touchX, float touchY) {
-        Paint textPaint = new Paint();
-        textPaint.setColor(0xFFDEA617);
-        textPaint.setTextSize(40 / scale); // Ajusta el tamaño del texto según sea necesario
-
-        float textWidth = textPaint.measureText(galeriaText);  // Ancho del texto
-        float textHeight = textPaint.getTextSize();            // Altura del texto
-
-        float textLeft = textX;
-        float textTop = textY - textHeight;  // Ajusta según cómo se dibuja el texto
-        float textRight = textX + textWidth;
-        float textBottom = textY;
-
-        // Verificar si las coordenadas del toque están dentro del área del texto de la galería
-        return touchX >= textLeft && touchX <= textRight && touchY >= textTop && touchY <= textBottom;
-    }
 
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
+
+        float viewWidth = getWidth();
+        float viewHeight = getHeight();
+        float contentWidth = 1080; // Ancho original del contenido del mapa
+        float contentHeight = 1000; // Alto original del contenido del mapa
+
+        // Calcular la escala para ajustar el mapa al tamaño de la vista, dejando espacio en la parte inferior
+        float scaleX = viewWidth / contentWidth;
+        float scaleY = (viewHeight - 100) / contentHeight; // Deja un espacio de 100 píxeles en la parte inferior
+        scale = Math.min(scaleX, scaleY);
+
+        // Ajustar el tamaño del mapa en el lienzo
+        float scaledWidth = contentWidth * scale;
+        float scaledHeight = contentHeight * scale;
+
+        // Calcular el desplazamiento para centrar el mapa y dejar el espacio en la parte inferior
+        float offsetX = (viewWidth - scaledWidth) / 2;
+        float offsetY = (viewHeight - scaledHeight - 800) / 2; // Ajusta el desplazamiento para el espacio inferior
+
+        // Guardar el estado del lienzo
+        canvas.save();
+        canvas.translate(offsetX, offsetY);
+        canvas.scale(scale, scale);
+
         // Dibujar las imágenes en el Canvas
         for (int i = 0; i < drawables.length; i++) {
             Drawable drawable = drawables[i];
@@ -258,20 +284,7 @@ public class MapaView extends View {
             }
         }
 
-        float viewWidth = getWidth();
-        float viewHeight = getHeight();
-        float contentWidth = 1080; // Ancho original del contenido del mapa
-        float contentHeight = 1500; // Alto original del contenido del mapa
-
-        float scaleX = viewWidth / contentWidth;
-        float scaleY = viewHeight / contentHeight;
-        float scale = Math.min(scaleX, scaleY);
-
-        // Guardar la escala para usarla en otros métodos como drawGalleryText
-        this.scale = scale;
-
-        // Resto de tu lógica de dibujo
-        // Llama a drawGalleryText o métodos similares que necesiten usar scale
+        // Dibujar textos de galería
         drawGalleryText(canvas);
 
         // Dibujar cada área del mapa con su forma correspondiente
@@ -287,26 +300,13 @@ public class MapaView extends View {
             canvas.drawLine(linea.startX, linea.startY, linea.endX, linea.endY, paint);
         }
 
-        // Dibujar cada área del mapa con su círculo correspondiente
-        for (Mapa mapa : mapas) {
-            mapa.draw(canvas, paint);
-        }
-
         // Dibujar el círculo adicional (óvalo del lugar)
         paint.setStyle(Paint.Style.FILL);
         paint.setColor(0xFFD9D9D9);  // Color verde como ejemplo
         canvas.drawCircle(centerX, centerY, radius, paint);
 
-        scaleX = viewWidth / contentWidth;
-        scaleY = viewHeight / contentHeight;
-
-        // Calculate the offsets
-        offsetX = 0; // Start from the left edge
-        offsetY = 0; // Start from the top edge
-
-        canvas.save();
-        canvas.translate(offsetX, offsetY);
-        canvas.scale(scale, scale);
+        // Restaurar el estado del lienzo
+        canvas.restore();
     }
 }
 

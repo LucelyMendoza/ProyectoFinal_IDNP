@@ -38,6 +38,7 @@ public class MapaFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_mapa, container, false);
         MapaView mapaView = view.findViewById(R.id.mapaView);
         // Initialize mapaView or set any required properties here
+        // Ensure that the canvas inside MapaView scales correctly
         return view;
     }
 }
