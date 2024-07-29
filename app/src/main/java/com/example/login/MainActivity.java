@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.example.login.Room.PinturaDao;
 import com.example.login.fragments.CuadrosFragment;
 import com.example.login.fragments.HomeFragment;
 import com.example.login.fragments.MapaFragment;
@@ -28,7 +29,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        //Agregado 29/07
+        AppDatabase db = MyApp.getInstance().getDatabase();
+        PinturaDao pinturaDao = db.pinturaDao();
 
+        // Usa el pinturaDao para interactuar con la tabla Pintura
         String accountEntity = getIntent().getStringExtra("ACCOUNT");
         Log.d("MainActivity", accountEntity);
 

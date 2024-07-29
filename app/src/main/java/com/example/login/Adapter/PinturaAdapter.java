@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.login.Pintura;
+import com.example.login.Entity.Pintura;
 import com.idnp2024a.loginsample.R;
 
 import java.util.List;
@@ -49,6 +49,5 @@ public class PinturaAdapter extends RecyclerView.Adapter<PinturaViewHolder> {
         void onAudioClick(Pintura pintura);
     }
 }
-
 
 

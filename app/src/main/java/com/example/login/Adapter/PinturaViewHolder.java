@@ -4,10 +4,9 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.login.Pintura;
+import com.example.login.Entity.Pintura;
 import com.idnp2024a.loginsample.R;
 
 public class PinturaViewHolder extends RecyclerView.ViewHolder {

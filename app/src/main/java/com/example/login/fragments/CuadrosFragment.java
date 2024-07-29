@@ -18,8 +18,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.login.Adapter.PinturaAdapter;
-import com.example.login.Pintura;
+import com.example.login.Entity.Pintura;
 import com.idnp2024a.loginsample.R;
+
 
 import java.util.ArrayList;
 import java.util.List;
