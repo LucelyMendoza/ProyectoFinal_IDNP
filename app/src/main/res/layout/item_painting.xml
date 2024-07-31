@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="8dp"
+    android:background="@drawable/card_background"
+    android:layout_margin="12dp"
+    android:elevation="4dp"
+    android:backgroundTint="@color/white"
+    android:clipToOutline="true">
+
+    <ImageView
+        android:id="@+id/paintingImage"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:scaleType="centerCrop"
+        android:contentDescription="@string/painting_image_desc"
+        style="@style/RoundedImage" />
+
+    <TextView
+        android:id="@+id/paintingTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Título de la Pintura"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:paddingTop="4dp"
+        android:paddingStart="8dp"
+        android:paddingEnd="8dp" />
+
+    <TextView
+        android:id="@+id/paintingArtist"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Nombre del Artista"
+        android:textSize="14sp"
+        android:textColor="@android:color/darker_gray"
+        android:paddingStart="8dp"
+        android:paddingEnd="8dp"
+        android:paddingBottom="8dp" />
+
+</LinearLayout>

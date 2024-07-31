@@ -60,7 +60,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Artista 1"
+            android:text="Exposición colectiva"
             style="@style/ItemTitleText"
             android:layout_marginTop="4dp"/>
 
@@ -81,7 +81,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text=" @ridzjcob"
+                android:text="Homenaje póstumo a Chalo Guillén"
                 style="@style/ItemSubtitleText"/>
         </LinearLayout>
 
