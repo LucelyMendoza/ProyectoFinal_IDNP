@@ -30,8 +30,46 @@ public class PinturaViewModel extends AndroidViewModel {
         galeriaDao = database.galeriaDao();
     }
 
+    // Método para insertar un Autor
+    public void insertAutor(Autor autor) {
+        new InsertAutorAsyncTask(autorDao).execute(autor);
+    }
+
+    // Método para insertar una Galeria
+    public void insertGaleria(Galeria galeria) {
+        new InsertGaleriaAsyncTask(galeriaDao).execute(galeria);
+    }
     public void insert(Pintura pintura) {
         new InsertPinturaAsyncTask(pinturaDao, autorDao, galeriaDao).execute(pintura);
+    }
+
+    private static class InsertAutorAsyncTask extends AsyncTask<Autor, Void, Void> {
+        private AutorDao autorDao;
+
+        private InsertAutorAsyncTask(AutorDao autorDao) {
+            this.autorDao = autorDao;
+        }
+
+        @Override
+        protected Void doInBackground(Autor... autores) {
+            autorDao.insert(autores[0]);
+            return null;
+        }
+    }
+
+    // AsyncTask para insertar una Galeria
+    private static class InsertGaleriaAsyncTask extends AsyncTask<Galeria, Void, Void> {
+        private GaleriaDao galeriaDao;
+
+        private InsertGaleriaAsyncTask(GaleriaDao galeriaDao) {
+            this.galeriaDao = galeriaDao;
+        }
+
+        @Override
+        protected Void doInBackground(Galeria... galerias) {
+            galeriaDao.insert(galerias[0]);
+            return null;
+        }
     }
 
     private static class InsertPinturaAsyncTask extends AsyncTask<Pintura, Void, Void> {
@@ -65,5 +103,7 @@ public class PinturaViewModel extends AndroidViewModel {
             Log.d("PinturaViewModel", "Pintura insertada correctamente.");
         }
     }
+
+
 }
 

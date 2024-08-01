@@ -2,6 +2,7 @@ package com.example.login;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.MenuItem;
 
@@ -12,7 +13,11 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.example.login.Entity.Autor;
+import com.example.login.Entity.Galeria;
 import com.example.login.Entity.Pintura;
+import com.example.login.Room.AutorDao;
+import com.example.login.Room.GaleriaDao;
 import com.example.login.Room.PinturaDao;
 import com.example.login.fragments.CuadrosFragment;
 import com.example.login.fragments.HomeFragment;
@@ -20,8 +25,6 @@ import com.example.login.fragments.MapaFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 import com.idnp2024a.loginsample.R;
-
-import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     private FragmentManager fragmentManager = null;
@@ -31,10 +34,26 @@ public class MainActivity extends AppCompatActivity {
     private MapaFragment mapaFragment = null;
 
     private class InsertPinturaTask extends AsyncTask<Pintura, Void, Void> {
+        private PinturaDao pinturaDao;
+        private AutorDao autorDao;
+        private GaleriaDao galeriaDao;
+        private void InsertPinturaAsyncTask(PinturaDao pinturaDao, AutorDao autorDao, GaleriaDao galeriaDao) {
+            this.pinturaDao = pinturaDao;
+            this.autorDao = autorDao;
+            this.galeriaDao = galeriaDao;
+        }
         @Override
         protected Void doInBackground(Pintura... pinturas) {
-            PinturaDao pinturaDao = MyApp.getInstance().getDatabase().pinturaDao();
-            pinturaDao.insert(pinturas[0]);
+            Log.d("PinturaViewModel", "Inserting pintura in background...");
+            Pintura pintura = pinturas[0];
+            Autor autor = autorDao.getByName(pintura.getArtista());
+            Galeria galeria = galeriaDao.getByName(pintura.getGaleria());
+
+            if (autor != null && galeria != null) {
+                pinturaDao.insert(pintura);
+            } else {
+                Log.e("PinturaViewModel", "Foreign key constraint failed: autor or galeria does not exist.");
+            }
             return null;
         }
     }
@@ -46,22 +65,35 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Inicializar el ViewModel
         pinturaViewModel = new ViewModelProvider(this).get(PinturaViewModel.class);
 
-        // Crear y agregar una nueva pintura a la base de datos
-        Pintura nuevaPintura = new Pintura();
-        nuevaPintura.setImagenId(1);
-        nuevaPintura.setNombre("El Grito");
-        nuevaPintura.setArtista("Edvard Munch");
-        nuevaPintura.setEstrellas("5");
-        nuevaPintura.setGaleria("Galería Nacional");
-        nuevaPintura.setDescripcion("Una pintura famosa de Munch.");
-        nuevaPintura.setAudio(1);
+        // Insertar datos de prueba de manera asincrónica
+        new Thread(() -> {
+            Autor autor = new Autor();
+            autor.setNombre("Edvard Munch");
+            pinturaViewModel.insertAutor(autor);
 
-        pinturaViewModel.insert(nuevaPintura);
-        String accountEntity = getIntent().getStringExtra("ACCOUNT");
-        Log.d("MainActivity", accountEntity);
+            Galeria galeria = new Galeria();
+            galeria.setNombre("Galería Nacional");
+            pinturaViewModel.insertGaleria(galeria);
+
+            runOnUiThread(() -> {
+                // Crear una nueva pintura
+                Pintura pintura = new Pintura();
+                pintura.setNombre("El Grito");
+                pintura.setDescripcion("Una pintura famosa de Munch.");
+                pintura.setImagenId(1);
+                pintura.setEstrellas("cinco");
+                pintura.setAudio(1);
+
+                // Asegúrate de que el Autor y Galería estén en la BD antes de usar sus IDs
+                new Handler().postDelayed(() -> {
+                    pintura.setAutorId(autor.getId());  // Asigna el ID correcto
+                    pintura.setGaleriaId(galeria.getId()); // Asigna el ID correcto
+                    pinturaViewModel.insert(pintura);
+                }, 1000);
+            });
+        }).start();
 
         // Cargar fragmentos
         fragmentManager = getSupportFragmentManager();
@@ -101,4 +133,5 @@ public class MainActivity extends AppCompatActivity {
             fragmentTransaction.commit();
         }
     }
+
 }

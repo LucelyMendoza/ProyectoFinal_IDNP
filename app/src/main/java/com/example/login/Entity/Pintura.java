@@ -121,4 +121,10 @@ public class Pintura {
     public void setAudio(int audio) {
         this.audio = audio;
     }
+
+    public void setAutorId(int id) {
+    }
+
+    public void setGaleriaId(int id) {
+    }
 }
