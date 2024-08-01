@@ -23,5 +23,7 @@ public interface GaleriaDao {
 
     @Query("SELECT * FROM galeria")
     List<Galeria> getAllGalerias();
-}
 
+    @Query("SELECT * FROM galeria WHERE nombre = :nombre LIMIT 1")
+    Galeria getByName(String nombre);  // Método que necesitas agregar
+}

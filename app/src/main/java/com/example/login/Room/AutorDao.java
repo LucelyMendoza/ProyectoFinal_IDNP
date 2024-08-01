@@ -23,5 +23,7 @@ public interface AutorDao {
 
     @Query("SELECT * FROM autor")
     List<Autor> getAllAutores();
-}
 
+    @Query("SELECT * FROM autor WHERE nombre = :nombre LIMIT 1")
+    Autor getByName(String nombre);  // Método que necesitas agregar
+}

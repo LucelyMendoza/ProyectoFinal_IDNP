@@ -2,12 +2,25 @@ package com.example.login.Entity;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
+import androidx.room.ForeignKey;
 import androidx.room.Ignore;
+import androidx.room.Index;
 import androidx.room.PrimaryKey;
 
-@Entity(tableName = "pintura")
+@Entity(tableName = "pintura",
+        foreignKeys = {
+                @ForeignKey(entity = Autor.class,
+                        parentColumns = "nombre",
+                        childColumns = "artista",
+                        onDelete = ForeignKey.CASCADE),
+                @ForeignKey(entity = Galeria.class,
+                        parentColumns = "nombre",
+                        childColumns = "galeria",
+                        onDelete = ForeignKey.CASCADE)
+        },
+        indices = {@Index(value = "artista"), @Index(value = "galeria")})
 public class Pintura {
-    @PrimaryKey(autoGenerate = true) // Añadido para que Room pueda generar un id único
+    @PrimaryKey(autoGenerate = true)
     private int id;
 
     @ColumnInfo(name = "imagen_id")
@@ -32,8 +45,9 @@ public class Pintura {
     private int audio;
 
     // Constructor vacío necesario para Room
-    public Pintura() {}
     @Ignore
+    public Pintura() {}
+
     public Pintura(int imagenId, String nombre, String artista, String estrellas, String galeria, String descripcion, int audio) {
         this.imagenId = imagenId;
         this.nombre = nombre;
