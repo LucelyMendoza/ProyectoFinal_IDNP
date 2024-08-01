@@ -10,6 +10,12 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.example.login.Gallery1Fragment;
+import com.example.login.Gallery2Fragment;
+import com.example.login.Gallery3Fragment;
+import com.example.login.Gallery4Fragment;
+import com.example.login.Gallery5Fragment;
+import com.example.login.Gallery6Fragment;
+import com.example.login.Gallery7Fragment;
 import com.idnp2024a.loginsample.R;
 
 /**
@@ -65,15 +71,21 @@ public class HomeFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
-        ImageView imageViewGaleria1 = view.findViewById(R.id.imageViewGaleria1);/*
+        ImageView imageViewGaleria1 = view.findViewById(R.id.imageViewGaleria1);
         ImageView imageViewGaleria2 = view.findViewById(R.id.imageViewGaleria2);
         ImageView imageViewGaleria3 = view.findViewById(R.id.imageViewGaleria3);
         ImageView imageViewGaleria4 = view.findViewById(R.id.imageViewGaleria4);
         ImageView imageViewGaleria5 = view.findViewById(R.id.imageViewGaleria5);
         ImageView imageViewGaleria6 = view.findViewById(R.id.imageViewGaleria6);
-        ImageView imageViewGaleria7 = view.findViewById(R.id.imageViewGaleria7);*/
+        ImageView imageViewGaleria7 = view.findViewById(R.id.imageViewGaleria7);
 
         imageViewGaleria1.setOnClickListener(v -> openGalleryFragment(new Gallery1Fragment()));
+        imageViewGaleria2.setOnClickListener(v -> openGalleryFragment(new Gallery2Fragment()));
+        imageViewGaleria3.setOnClickListener(v -> openGalleryFragment(new Gallery3Fragment()));
+        imageViewGaleria4.setOnClickListener(v -> openGalleryFragment(new Gallery4Fragment()));
+        imageViewGaleria5.setOnClickListener(v -> openGalleryFragment(new Gallery5Fragment()));
+        imageViewGaleria6.setOnClickListener(v -> openGalleryFragment(new Gallery6Fragment()));
+        imageViewGaleria7.setOnClickListener(v -> openGalleryFragment(new Gallery7Fragment()));
 
         return view;
     }
