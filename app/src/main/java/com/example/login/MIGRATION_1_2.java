@@ -10,6 +10,7 @@ public class MIGRATION_1_2 {
             // Aquí puedes realizar cambios en el esquema de la base de datos.
             // Por ejemplo, si estás añadiendo una nueva columna:
             database.execSQL("ALTER TABLE pintura ADD COLUMN nueva_columna INTEGER DEFAULT 0 NOT NULL");
+            database.execSQL("ALTER TABLE pintura ADD COLUMN nueva_columna TEXT");
         }
     };
 }

@@ -20,6 +20,7 @@ import com.example.login.Room.AutorDao;
 import com.example.login.Room.GaleriaDao;
 import com.example.login.Room.PinturaDao;
 import com.example.login.fragments.CuadrosFragment;
+import com.example.login.fragments.DetalleObraFragment;
 import com.example.login.fragments.HomeFragment;
 import com.example.login.fragments.MapaFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -70,21 +71,23 @@ public class MainActivity extends AppCompatActivity {
         // Insertar datos de prueba de manera asincrónica
         new Thread(() -> {
             Autor autor = new Autor();
-            autor.setNombre("Edvard Munch");
+            autor.setNombre("Camilo Cabello");
             pinturaViewModel.insertAutor(autor);
 
             Galeria galeria = new Galeria();
-            galeria.setNombre("Galería Nacional");
+            galeria.setNombre("Galería I");
             pinturaViewModel.insertGaleria(galeria);
 
             runOnUiThread(() -> {
                 // Crear una nueva pintura
                 Pintura pintura = new Pintura();
-                pintura.setNombre("El Grito");
+                pintura.setNombre("Una caricatura");
                 pintura.setDescripcion("Una pintura famosa de Munch.");
-                pintura.setImagenId(1);
+                pintura.setCategoria("Categoria");
+                pintura.setTecnica("Acuarela");
+                pintura.setImagenId(2);
                 pintura.setEstrellas("cinco");
-                pintura.setAudio(1);
+                pintura.setAudio(2);
 
                 // Asegúrate de que el Autor y Galería estén en la BD antes de usar sus IDs
                 new Handler().postDelayed(() -> {
@@ -123,7 +126,22 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+        /*DetalleObraFragment fragment = DetalleObraFragment.newInstance("", audioId);
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.fragmentContainerView, fragment)
+                .addToBackStack(null)
+                .commit();*/
     }
+
+   /* private void loadDetalleObraFragment(int audioId) {
+        // Aquí deberías cargar el fragmento y pasar el audioId
+        // Por ejemplo:
+        DetalleObraFragment fragment = DetalleObraFragment.newInstance("", audioId);
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.fragmentContainerView, fragment)
+                .addToBackStack(null)
+                .commit();
+    }*/
 
     // Método para cargar los fragmentos
     private void loadFragment(Fragment fragment) {
@@ -133,5 +151,6 @@ public class MainActivity extends AppCompatActivity {
             fragmentTransaction.commit();
         }
     }
+
 
 }

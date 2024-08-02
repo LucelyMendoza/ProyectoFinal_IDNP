@@ -44,11 +44,17 @@ public class Pintura {
     @ColumnInfo(name = "audio")
     private int audio;
 
+    @ColumnInfo(name = "categoria")
+    private String categoria;
+
+    @ColumnInfo(name = "tecnica")
+    private String tecnica;
+
     // Constructor vacío necesario para Room
     @Ignore
     public Pintura() {}
 
-    public Pintura(int imagenId, String nombre, String artista, String estrellas, String galeria, String descripcion, int audio) {
+    public Pintura(int imagenId, String nombre, String artista, String estrellas, String galeria, String descripcion, int audio, String categoria, String tecnica) {
         this.imagenId = imagenId;
         this.nombre = nombre;
         this.artista = artista;
@@ -56,6 +62,8 @@ public class Pintura {
         this.descripcion = descripcion;
         this.galeria = galeria;
         this.audio = audio;
+        this.categoria = categoria;
+        this.tecnica = tecnica;
     }
 
     public int getId() {
@@ -127,4 +135,20 @@ public class Pintura {
 
     public void setGaleriaId(int id) {
     }
+    public String getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(String categoria) {
+        this.categoria = categoria;
+    }
+
+    public String getTecnica() {
+        return tecnica;
+    }
+
+    public void setTecnica(String tecnica) {
+        this.tecnica = tecnica;
+    }
+
 }

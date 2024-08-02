@@ -5,7 +5,6 @@ import android.os.AsyncTask;
 import android.util.Log;
 
 import androidx.lifecycle.AndroidViewModel;
-import androidx.lifecycle.LiveData;
 import androidx.room.Room;
 
 import com.example.login.Entity.Autor;
@@ -52,7 +51,11 @@ public class PinturaViewModel extends AndroidViewModel {
 
         @Override
         protected Void doInBackground(Autor... autores) {
-            autorDao.insert(autores[0]);
+            try {
+                autorDao.insert(autores[0]);
+            } catch (Exception e) {
+                Log.e("InsertAutorAsyncTask", "Error inserting autor: " + e.getMessage());
+            }
             return null;
         }
     }
@@ -67,7 +70,11 @@ public class PinturaViewModel extends AndroidViewModel {
 
         @Override
         protected Void doInBackground(Galeria... galerias) {
-            galeriaDao.insert(galerias[0]);
+            try {
+                galeriaDao.insert(galerias[0]);
+            } catch (Exception e) {
+                Log.e("InsertGaleriaAsyncTask", "Error inserting galeria: " + e.getMessage());
+            }
             return null;
         }
     }
@@ -91,7 +98,11 @@ public class PinturaViewModel extends AndroidViewModel {
             Galeria galeria = galeriaDao.getByName(pintura.getGaleria());
 
             if (autor != null && galeria != null) {
-                pinturaDao.insert(pintura);
+                try {
+                    pinturaDao.insert(pintura);
+                } catch (Exception e) {
+                    Log.e("InsertPinturaAsyncTask", "Error inserting pintura: " + e.getMessage());
+                }
             } else {
                 Log.e("PinturaViewModel", "Foreign key constraint failed: autor or galeria does not exist.");
             }
@@ -103,7 +114,4 @@ public class PinturaViewModel extends AndroidViewModel {
             Log.d("PinturaViewModel", "Pintura insertada correctamente.");
         }
     }
-
-
 }
-

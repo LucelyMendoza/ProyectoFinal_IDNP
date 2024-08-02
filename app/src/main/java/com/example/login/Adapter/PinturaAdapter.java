@@ -41,6 +41,11 @@ public class PinturaAdapter extends RecyclerView.Adapter<PinturaViewHolder> {
         return pinturas.size();
     }
 
+    public void updateList(List<Pintura> filteredList) {
+        pinturas = filteredList;
+        notifyDataSetChanged();
+    }
+
     public interface OnItemClickListener {
         void onItemClick(Pintura pintura);
     }

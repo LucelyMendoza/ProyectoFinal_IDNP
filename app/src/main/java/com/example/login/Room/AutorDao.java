@@ -5,6 +5,7 @@ import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
+import androidx.room.OnConflictStrategy;
 
 import com.example.login.Entity.Autor;
 
@@ -12,7 +13,7 @@ import java.util.List;
 
 @Dao
 public interface AutorDao {
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
     void insert(Autor... autores);
 
     @Update
@@ -25,5 +26,5 @@ public interface AutorDao {
     List<Autor> getAllAutores();
 
     @Query("SELECT * FROM autor WHERE nombre = :nombre LIMIT 1")
-    Autor getByName(String nombre);  // Método que necesitas agregar
+    Autor getByName(String nombre);
 }

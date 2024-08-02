@@ -1,5 +1,6 @@
 package com.example.login.fragments;
 
+import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 
@@ -8,6 +9,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +17,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.idnp2024a.loginsample.R;
+import com.example.login.AudioService;
 
 public class DetalleObraFragment extends Fragment {
 
@@ -28,6 +31,7 @@ public class DetalleObraFragment extends Fragment {
 
     private int imagenId;
     private String nombre;
+    private boolean isAudioPlaying = false;
     private String artista;
     private String estrellas;
     private String descripcion;
@@ -96,19 +100,28 @@ public class DetalleObraFragment extends Fragment {
 
 
         //  Botón de audio
+        //  Botón de audio
         imgAudio.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (mediaPlayer == null) {
-                    mediaPlayer = MediaPlayer.create(getContext(), audioId);
-                }
-                if (mediaPlayer.isPlaying()) {
-                    mediaPlayer.pause();
+                Intent serviceIntent = new Intent(getActivity(), AudioService.class);
+
+                // Cambia el estado del audio y el comando según corresponda
+                if (isAudioPlaying) {
+                    serviceIntent.putExtra(AudioService.COMMAND, AudioService.PAUSE); // Enviar comando de pausa
+                    imgAudio.setImageResource(R.drawable.iconoaudio); // Cambia el icono a "play"
+                    isAudioPlaying = false; // Actualiza el estado
                 } else {
-                    mediaPlayer.start();
+                    serviceIntent.putExtra(AudioService.COMMAND, AudioService.PLAY); // Enviar comando de reproducción
+                    serviceIntent.putExtra(AudioService.TEXT, descripcion); // Envía la descripción al servicio
+                    imgAudio.setImageResource(R.drawable.pause_icon); // Cambia el icono a "pause"
+                    isAudioPlaying = true; // Actualiza el estado
                 }
+
+                getActivity().startService(serviceIntent);
             }
         });
+
 
         return view;
     }
@@ -121,4 +134,33 @@ public class DetalleObraFragment extends Fragment {
             mediaPlayer = null;
         }
     }
+    @Override
+    public void onStop() {
+        super.onStop();
+        // Inicia el servicio en primer plano solo si el fragmento ya no es visible
+        Intent serviceIntent = new Intent(getActivity(), AudioService.class);
+        serviceIntent.putExtra(AudioService.COMMAND, AudioService.START_FOREGROUND);
+
+        // Asegúrate de que el audioId se convierte a un nombre de archivo adecuado, si es necesario
+        String filename = "audio_" + R.raw.audio1; // Cambia esto según cómo estés almacenando los archivos de audio
+        serviceIntent.putExtra(AudioService.FILENAME, filename); // Asegúrate de que el nombre del archivo no sea nulo
+
+        Log.d("DetalleObraFragment", "onStop - Command: " + AudioService.START_FOREGROUND);
+        Log.d("DetalleObraFragment", "onStop - Filename: " + filename);
+
+        getActivity().startService(serviceIntent);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        // Detén el servicio de primer plano cuando el usuario vuelve a la aplicación
+        Intent serviceIntent = new Intent(getActivity(), AudioService.class);
+        serviceIntent.putExtra(AudioService.COMMAND, AudioService.STOP_FOREGROUND);
+
+        Log.d("DetalleObraFragment", "onResume - Command: " + AudioService.STOP_FOREGROUND);
+
+        getActivity().startService(serviceIntent);
+    }
+
 }
