@@ -15,23 +15,23 @@ import com.idnp2024a.loginsample.R;
 
 import java.util.List;
 
-public class Sala extends View {
+public class GaleriaVIISala extends View {
 
     private Canvas _canvas;
     private List<PointRoom> points;
     private Context context;
 
-    public Sala(Context context) {
+    public GaleriaVIISala(Context context) {
         super(context);
         init(context);
     }
 
-    public Sala(Context context, AttributeSet attrs) {
+    public GaleriaVIISala(Context context, AttributeSet attrs) {
         super(context, attrs);
         init(context);
     }
 
-    public Sala(Context context, AttributeSet attrs, int defStyle) {
+    public GaleriaVIISala(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
         init(context);
     }

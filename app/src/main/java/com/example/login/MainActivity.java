@@ -68,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
         pinturaViewModel = new ViewModelProvider(this).get(PinturaViewModel.class);
 
         // Insertar datos de prueba de manera asincrónica
-        new Thread(() -> {
+        /*new Thread(() -> {
             Autor autor = new Autor();
             autor.setNombre("Edvard Munch");
             pinturaViewModel.insertAutor(autor);
@@ -93,7 +93,7 @@ public class MainActivity extends AppCompatActivity {
                     pinturaViewModel.insert(pintura);
                 }, 1000);
             });
-        }).start();
+        }).start();*/
 
         // Cargar fragmentos
         fragmentManager = getSupportFragmentManager();

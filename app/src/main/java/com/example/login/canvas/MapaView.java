@@ -16,6 +16,14 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.example.login.Galerias.GaleriaVIISala;
+import com.example.login.fragments.GaleriaIFragment;
+import com.example.login.fragments.GaleriaIIFragment;
+import com.example.login.fragments.GaleriaIIIFragment;
+import com.example.login.fragments.GaleriaIVFragment;
+import com.example.login.fragments.GaleriaVFragment;
+import com.example.login.fragments.GaleriaVIFragment;
+import com.example.login.fragments.GaleriaVIISalaFragment;
 import com.example.login.fragments.GalleryFragment;
 import com.example.login.fragments.HomeFragment;
 import com.idnp2024a.loginsample.R;
@@ -214,23 +222,105 @@ public class MapaView extends View {
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
                 // Verificar si el toque está dentro de "Galería I"
-                if (estaEnAreaGaleria(galeria2TextX, galeria2TextY, "Galería I", touchX, touchY)) {
+                if (estaEnAreaGaleria(galeria1TextX, galeria1TextY, "Galería I", touchX, touchY)) {
                     // Manejar el evento de clic en "Galería I"
                     Log.d(TAG, "Se ha presionado Galería I");
 
                     // Iniciar la transacción del fragmento RoomView
                     FragmentManager fragmentManager = ((FragmentActivity) getContext()).getSupportFragmentManager();
                     FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                    fragmentTransaction.replace(R.id.fragmentContainerView, new GalleryFragment());
+                    fragmentTransaction.replace(R.id.fragmentContainerView, new GaleriaIFragment());
                     fragmentTransaction.addToBackStack(null); // Permite volver al fragmento anterior con el botón de retroceso
                     fragmentTransaction.commit();
                     // Indicar que se ha manejado el evento de toque
                     return true;
-                } else if (estaEnAreaGaleria(galeria2TextX, galeria2TextY, "Galería II", touchX, touchY)) {
-                    // Manejar el evento de clic en "GALERÍA II"
-                    Log.d(TAG, "Se ha presionado Galería II");
+                } else if (estaEnAreaGaleria(galeria1TextX, galeria1TextY, "Galería I", touchX, touchY)) {
+                    // Manejar el evento de clic en "GALERÍA I"
+                    Log.d(TAG, "Se ha presionado Galería I");
 
                     // Aquí puedes iniciar la navegación a otro fragmento o realizar otra acción
+                    return true;
+                }
+                if (estaEnAreaGaleria(galeria2TextX, galeria2TextY, "Galería II", touchX, touchY)) {
+                    Log.d(TAG, "Se ha presionado Galería II");
+
+                    // Iniciar la transacción del fragmento RoomView
+                    FragmentManager fragmentManager = ((FragmentActivity) getContext()).getSupportFragmentManager();
+                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                    fragmentTransaction.replace(R.id.fragmentContainerView, new GaleriaIIFragment());
+                    fragmentTransaction.addToBackStack(null);
+                    fragmentTransaction.commit();
+                    // Indicar que se ha manejado el evento de toque
+                    return true;
+                } else if (estaEnAreaGaleria(galeria2TextX, galeria1TextY, "Galería II", touchX, touchY)) {
+                    Log.d(TAG, "Se ha presionado Galería II");
+                    return true;
+                }
+                if (estaEnAreaGaleria(galeria3TextX, galeria3TextY, "Galería III", touchX, touchY)) {
+                    Log.d(TAG, "Se ha presionado Galería III");
+
+                    // Iniciar la transacción del fragmento RoomView
+                    FragmentManager fragmentManager = ((FragmentActivity) getContext()).getSupportFragmentManager();
+                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                    fragmentTransaction.replace(R.id.fragmentContainerView, new GaleriaIIIFragment());
+                    fragmentTransaction.addToBackStack(null);
+                    fragmentTransaction.commit();
+                    // Indicar que se ha manejado el evento de toque
+                    return true;
+                } else if (estaEnAreaGaleria(galeria3TextX, galeria3TextY, "Galería III", touchX, touchY)) {
+                    Log.d(TAG, "Se ha presionado Galería III");
+                    return true;
+                }
+                if (estaEnAreaGaleria(galeria4TextX, galeria4TextY, "Galería IV", touchX, touchY)) {
+                    Log.d(TAG, "Se ha presionado Galería IV");
+                    FragmentManager fragmentManager = ((FragmentActivity) getContext()).getSupportFragmentManager();
+                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                    fragmentTransaction.replace(R.id.fragmentContainerView, new GaleriaIVFragment());
+                    fragmentTransaction.addToBackStack(null);
+                    fragmentTransaction.commit();
+                    // Indicar que se ha manejado el evento de toque
+                    return true;
+                } else if (estaEnAreaGaleria(galeria4TextX, galeria4TextY, "Galería IV", touchX, touchY)) {
+                    Log.d(TAG, "Se ha presionado Galería IV");
+                    return true;
+                }
+                if (estaEnAreaGaleria(galeria5TextX, galeria5TextY, "Galería V", touchX, touchY)) {
+                    Log.d(TAG, "Se ha presionado Galería V");
+                    FragmentManager fragmentManager = ((FragmentActivity) getContext()).getSupportFragmentManager();
+                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                    fragmentTransaction.replace(R.id.fragmentContainerView, new GaleriaVFragment());
+                    fragmentTransaction.addToBackStack(null);
+                    fragmentTransaction.commit();
+                    // Indicar que se ha manejado el evento de toque
+                    return true;
+                } else if (estaEnAreaGaleria(galeria5TextX, galeria5TextY, "Galería V", touchX, touchY)) {
+                    Log.d(TAG, "Se ha presionado Galería V");
+                    return true;
+                }
+                if (estaEnAreaGaleria(galeria6TextX, galeria6TextY, "Galería VI", touchX, touchY)) {
+                    Log.d(TAG, "Se ha presionado Galería VI");
+                    FragmentManager fragmentManager = ((FragmentActivity) getContext()).getSupportFragmentManager();
+                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                    fragmentTransaction.replace(R.id.fragmentContainerView, new GaleriaVIFragment());
+                    fragmentTransaction.addToBackStack(null);
+                    fragmentTransaction.commit();
+                    // Indicar que se ha manejado el evento de toque
+                    return true;
+                } else if (estaEnAreaGaleria(galeria6TextX, galeria6TextY, "Galería VI", touchX, touchY)) {
+                    Log.d(TAG, "Se ha presionado Galería VI");
+                    return true;
+                }
+                if (estaEnAreaGaleria(laSalaTextX, laSalaTextY, "La sala", touchX, touchY)) {
+                    Log.d(TAG, "Se ha presionado La sala");
+                    FragmentManager fragmentManager = ((FragmentActivity) getContext()).getSupportFragmentManager();
+                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                    fragmentTransaction.replace(R.id.fragmentContainerView, new GaleriaVIISalaFragment());
+                    fragmentTransaction.addToBackStack(null);
+                    fragmentTransaction.commit();
+                    // Indicar que se ha manejado el evento de toque
+                    return true;
+                } else if (estaEnAreaGaleria(laSalaTextX, laSalaTextY, "La sala", touchX, touchY)) {
+                    Log.d(TAG, "Se ha presionado la Sala");
                     return true;
                 }
                 // Agrega más casos para el resto de galerías si es necesario

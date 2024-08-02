@@ -27,7 +27,7 @@
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="67dp"
         android:paddingHorizontal="16dp"
         android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
         android:textSize="14sp" />
@@ -36,8 +36,8 @@
         android:id="@+id/gridView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:numColumns="2"
         android:horizontalSpacing="12dp"
+        android:numColumns="2"
         android:verticalSpacing="12dp" />
 
 </LinearLayout>
