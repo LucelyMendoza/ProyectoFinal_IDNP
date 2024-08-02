@@ -137,17 +137,8 @@ public class DetalleObraFragment extends Fragment {
     @Override
     public void onStop() {
         super.onStop();
-        // Inicia el servicio en primer plano solo si el fragmento ya no es visible
         Intent serviceIntent = new Intent(getActivity(), AudioService.class);
-        serviceIntent.putExtra(AudioService.COMMAND, AudioService.START_FOREGROUND);
-
-        // Asegúrate de que el audioId se convierte a un nombre de archivo adecuado, si es necesario
-        String filename = "audio_" + R.raw.audio1; // Cambia esto según cómo estés almacenando los archivos de audio
-        serviceIntent.putExtra(AudioService.FILENAME, filename); // Asegúrate de que el nombre del archivo no sea nulo
-
-        Log.d("DetalleObraFragment", "onStop - Command: " + AudioService.START_FOREGROUND);
-        Log.d("DetalleObraFragment", "onStop - Filename: " + filename);
-
+        serviceIntent.putExtra(AudioService.COMMAND, AudioService.STOP); // Detener el audio cuando el fragmento se detiene
         getActivity().startService(serviceIntent);
     }
 
@@ -162,5 +153,6 @@ public class DetalleObraFragment extends Fragment {
 
         getActivity().startService(serviceIntent);
     }
+
 
 }

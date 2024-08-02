@@ -33,7 +33,7 @@ public class AudioService extends Service {
     public static final String STOP_FOREGROUND = "STOP_FOREGROUND";
 
     private MediaPlayer mediaPlayer;
-    private TextToSpeech textToSpeech; // Añadir TextToSpeech
+    private TextToSpeech textToSpeech;
     private boolean isPaused = false;
     private boolean isTtsReady = false;
 
@@ -60,12 +60,9 @@ public class AudioService extends Service {
                     isTtsReady = true; // Marca TTS como listo
                     int result = textToSpeech.setLanguage(new Locale("es", "ES"));
                     if (result == TextToSpeech.LANG_MISSING_DATA || result == TextToSpeech.LANG_NOT_SUPPORTED) {
-                        Log.e("AudioService", "Spanish language not supported");
                     }
 
-                    // Verifica si el idioma es compatible
                     } else {
-                        // Opcional: Puedes establecer una voz específica en español
                         List<Voice> voices = (List<Voice>) textToSpeech.getVoices();
                         for (Voice voice : voices) {
                             if (voice.getLocale().getLanguage().equals("es")) {
@@ -79,14 +76,12 @@ public class AudioService extends Service {
                         public void onStart(String utteranceId) {
                             Log.d("AudioService", "Speech started");
                         }
-
                         @Override
                         public void onDone(String utteranceId) {
                             Log.d("AudioService", "Speech done");
                             stopForeground(true); // Eliminar la notificación cuando termine
                             stopSelf(); // Detener el servicio
                         }
-
                         @Override
                         public void onError(String utteranceId) {
                             Log.e("AudioService", "Speech error");
