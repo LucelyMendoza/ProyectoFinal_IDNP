@@ -126,22 +126,7 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
-        /*DetalleObraFragment fragment = DetalleObraFragment.newInstance("", audioId);
-        getSupportFragmentManager().beginTransaction()
-                .replace(R.id.fragmentContainerView, fragment)
-                .addToBackStack(null)
-                .commit();*/
     }
-
-   /* private void loadDetalleObraFragment(int audioId) {
-        // Aquí deberías cargar el fragmento y pasar el audioId
-        // Por ejemplo:
-        DetalleObraFragment fragment = DetalleObraFragment.newInstance("", audioId);
-        getSupportFragmentManager().beginTransaction()
-                .replace(R.id.fragmentContainerView, fragment)
-                .addToBackStack(null)
-                .commit();
-    }*/
 
     // Método para cargar los fragmentos
     private void loadFragment(Fragment fragment) {
