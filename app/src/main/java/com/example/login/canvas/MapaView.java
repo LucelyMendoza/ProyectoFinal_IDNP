@@ -309,4 +309,3 @@ public class MapaView extends View {
         canvas.restore();
     }
 }
-
